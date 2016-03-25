@@ -25,7 +25,7 @@ public class Level {
 		this.game = game;
 		this.map = map;
 		if (isBossLevel()) {
-			PVector bs = map.getBossSpawn();
+			PVector bs = map.getBossSpawn().copy();
 			Enemy boss = game.getEnemyFactory().nextBoss(bs);
 			enemies.add(boss);
 		} else
