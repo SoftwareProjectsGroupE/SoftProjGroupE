@@ -25,7 +25,7 @@ public class FireMP extends BulletMP {
 	}
 	
 	@Override
-	public void render(PGraphics p, PImage img) {
-		fire.render(p, img);
+	public void render(PGraphics p) {
+		fire.render(p);
 	}
 }

@@ -426,14 +426,14 @@ public class GameMP extends Game {
 
 		synchronized (BULLETS_LOCK) {
 			for (Bullet b : bullets)
-				b.render(p, null);
+				b.render(p);
 		}
 
 		draw_players(p);
 
 		p.popMatrix();
 
-		player.render(p, null);
+		player.render(p);
 		render_health_bar(p, id, Main.WIDTH / 2, Main.HEIGHT / 2);
 
 		p.fill(0);

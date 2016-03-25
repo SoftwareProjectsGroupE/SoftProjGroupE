@@ -3,7 +3,6 @@ package entities.bullets;
 import entities.MobileEntity;
 import general.Game;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.core.PVector;
 
 public class Bullet extends MobileEntity {
@@ -20,7 +19,7 @@ public class Bullet extends MobileEntity {
 		followAngle();
 	}
 
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		p.stroke(0);
 		p.strokeWeight(1);
 		p.fill(255, 0, 255);

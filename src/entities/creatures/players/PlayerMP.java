@@ -10,7 +10,6 @@ import guns.PistolMP;
 import guns.PlayerGun;
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PImage;
 
 public class PlayerMP extends Player {
 	
@@ -75,7 +74,7 @@ public class PlayerMP extends Player {
 		return moved;
 	}
 
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		if(speedBoostTimeout > -1) {
 			p.fill(51, 205, 255);
 			p.rect(Main.WIDTH/2 - 25, Main.HEIGHT/2 -getRadius() - 15, speedBoostTimeout/5, 5);

@@ -4,11 +4,16 @@ import entities.bullets.Bullet;
 import entities.creatures.players.Player;
 import general.Game;
 import general.GameSP;
+import general.Main;
+import general.Sprites;
+import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
 
 public class StandardEnemy extends Enemy {
+	
+	private final PImage img = Main.getInstance().loadImage("./res/images/sprites/enemies/test.bmp");
 	
 	public StandardEnemy(double health, PVector loc, int radius, double speed, double cd) {
 		super(health, loc, radius, speed, cd);
@@ -22,13 +27,14 @@ public class StandardEnemy extends Enemy {
 	}
 	
 	@Override 
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		p.fill(255);
 		p.pushMatrix();
 		p.translate(locX(), locY());
-		p.ellipse(0, 0, diameter(), diameter());
+		//p.ellipse(0, 0, diameter(), diameter());
 		renderHealthBar(p, 50);
-		p.rotate((float) getAngle());
+		p.rotate((float) getAngle() + PApplet.radians(90));
+		p.image(img, -img.width/2, -img.height/2);
 		p.popMatrix();
 	}
 	

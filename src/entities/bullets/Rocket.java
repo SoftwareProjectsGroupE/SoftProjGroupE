@@ -28,7 +28,7 @@ public abstract class Rocket extends Bullet {
 	}
 
 	@Override
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		PVector temp = locCopy();
 		temp.x += Math.random() * 10 - 5;
 		temp.y += Math.random() * 10 - 5;

@@ -30,17 +30,27 @@ public class PlayerSP extends Player {
 	}
 
 	private void updateLoc() {
+		double ds = getSpeed();
+		double f = Main.frameRate;
+		
+		if(f < Main.MIN_FPS)
+			f = Main.MIN_FPS;
+		
+		ds *= 60.0/f;
+		
+		int s = (int) ds;
+	
 		if (controller.up)
-			updateLocY(-getSpeed());
+			updateLocY(-s);
 		if (controller.down)
-			updateLocY(getSpeed());
+			updateLocY(s);
 		if (controller.left)
-			updateLocX(-getSpeed());
+			updateLocX(-s);
 		if (controller.right)
-			updateLocX(getSpeed());
+			updateLocX(s);
 	}
 
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		if (speedBoostTimeout > -1) {
 			p.fill(51, 205, 255);
 			p.rect(locX() - 25, locY() - getRadius() - 15, speedBoostTimeout / 5, 5);
@@ -49,8 +59,8 @@ public class PlayerSP extends Player {
 		p.fill(255, 0, 255);
 		p.pushMatrix();
 		p.translate(locX(), locY());
-		PImage img1 = Sprites.get(controller.direction());
-		p.image(img1, -img1.width/2, -img1.height/2);
+		PImage img = Sprites.get(controller.direction());
+		p.image(img, -img.width/2, -img.height/2);
 		// p.ellipse(0, 0, diameter(), diameter());
 		renderHealthBar(p, 50);
 		p.popMatrix();

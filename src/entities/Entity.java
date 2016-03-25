@@ -4,7 +4,6 @@ import general.Game;
 import general.Main;
 import general.Removeable;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.core.PVector;
 
 public abstract class Entity implements Removeable {
@@ -19,7 +18,7 @@ public abstract class Entity implements Removeable {
 		this.radius = radius;
 	}
 
-	public abstract void render(PGraphics p, PImage img);
+	public abstract void render(PGraphics p);
 	
 	public double angleTo(Entity target) {
 		return Math.atan2(target.loc.y - loc.y, target.loc.x - loc.x);

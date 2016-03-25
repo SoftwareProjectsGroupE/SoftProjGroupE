@@ -211,14 +211,14 @@ public class Level {
 
 		for (Bullet b : player.getBullets())
 			if (b.onScreen(scrn_loc))
-				b.render(p, null);
+				b.render(p);
 
 		for (Enemy e : enemies) {
 			for (Bullet b : e.getBullets())
 				if (b.onScreen(scrn_loc))
-					b.render(p, null);
+					b.render(p);
 			if (e.onScreen(scrn_loc))
-				e.render(p, null);
+				e.render(p);
 		}
 		
 		if (enemies.size() < 5) {
@@ -239,7 +239,7 @@ public class Level {
 		for (ExplosionAnimation e : game.get_explosions())
 			e.render(p);
 
-		player.render(p, null);
+		player.render(p);
 		p.popMatrix();
 
 		player.getGun().render(p);

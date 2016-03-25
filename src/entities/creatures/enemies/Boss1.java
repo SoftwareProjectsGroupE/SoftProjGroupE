@@ -70,7 +70,7 @@ public class Boss1 extends Enemy {
 	}
 
 	@Override
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		p.fill(255);
 		p.pushMatrix();
 		p.translate(locX(), locY());

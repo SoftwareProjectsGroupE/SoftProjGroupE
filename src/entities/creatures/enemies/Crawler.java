@@ -17,7 +17,7 @@ public class Crawler extends Enemy {
 		seek(game.getPlayer());
 	}
 	
-	@Override public void render(PGraphics p, PImage img) {
+	@Override public void render(PGraphics p) {
 		p.fill(255);
 		p.pushMatrix();
 		p.translate(locX(), locY());

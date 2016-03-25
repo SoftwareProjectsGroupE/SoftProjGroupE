@@ -27,7 +27,7 @@ public class LaserBeam extends Bullet {
 	}
 	
 	@Override
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		p.stroke(0, 255, 0);
 		p.strokeWeight(diameter());
 		p.line(locX(), locY(), start.x, start.y);

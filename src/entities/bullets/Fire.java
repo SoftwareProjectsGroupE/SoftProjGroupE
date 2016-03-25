@@ -3,7 +3,6 @@ package entities.bullets;
 import general.Game;
 import processing.core.PApplet;
 import processing.core.PGraphics;
-import processing.core.PImage;
 import processing.core.PVector;
 
 public class Fire extends Bullet {
@@ -27,7 +26,7 @@ public class Fire extends Bullet {
 	}
 
 	@Override
-	public void render(PGraphics p, PImage img) {
+	public void render(PGraphics p) {
 		float radius = PApplet.map(timeout, start, 0, 0, MAX_RADIUS);
 		setRadius((int) radius);
 		float fade = PApplet.map(timeout, start, 0, 255, 0);

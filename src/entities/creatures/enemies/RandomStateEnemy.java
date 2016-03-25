@@ -3,6 +3,7 @@ package entities.creatures.enemies;
 import entities.creatures.players.Player;
 import general.Game;
 import general.GameSP;
+import general.Sprites;
 import guns.EnemyAutomatic;
 import guns.EnemyFlamethrower;
 import guns.EnemyGun;
@@ -70,13 +71,16 @@ public class RandomStateEnemy extends Enemy {
 		}
 	}
 
-	public void render(PGraphics p, PImage img) {
+	@Override
+	public void render(PGraphics p) {
 		p.stroke(0);
 		p.strokeWeight(1);
 		p.fill(0, 255, 0);
 		p.pushMatrix();
 		p.translate(locX(), locY());
 		renderHealthBar(p, 50);
+		//PImage img = Sprites.get(direction());
+		//p.image(img, -img.width/2, -img.height/2);
 		p.rotate((float) getAngle());
 		p.box(diameter());
 		p.popMatrix();

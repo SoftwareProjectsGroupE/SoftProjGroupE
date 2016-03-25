@@ -47,18 +47,13 @@ public class Sprites {
 	}
 
 	static int last_dir = 0;
-	static int delay = 0;
 
 	public static PImage get(int dir) {
 		if (dir == -1) {
 			dir = last_dir;
-			delay = 0;
-		} else if (delay > 5) { 
-			last_dir = dir;
-			delay = 0;
-		} 
+		}
 		
-		delay++;
+		last_dir = dir;
 		
 		int indx = (Main.frameCount/2) % 18;
 

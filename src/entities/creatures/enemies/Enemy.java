@@ -10,6 +10,7 @@ import general.Main;
 import general.Node;
 import general.PathFinder;
 import map.Map;
+import processing.core.PApplet;
 import processing.core.PVector;
 
 public abstract class Enemy extends Creature {
@@ -29,6 +30,7 @@ public abstract class Enemy extends Creature {
 
 	public void seek(Creature target) {
 		PVector dir = PVector.sub(target.loc(), loc());
+		setAngle(dir.heading());
 		dir.setMag((float) getSpeed());
 		loc().add(dir);
 	}
@@ -54,6 +56,7 @@ public abstract class Enemy extends Creature {
 		if (path != null && path.size() > 0 && temp != null) {
 			PVector target = new PVector(temp.x * bs + bs / 2, temp.y * bs + bs / 2);
 			PVector dir = PVector.sub(target, loc());
+			setAngle(dir.heading());
 			loc().add(dir.setMag((float) getSpeed()));
 		}
 
