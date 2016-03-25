@@ -13,8 +13,6 @@ import processing.core.PVector;
 
 public class StandardEnemy extends Enemy {
 	
-	private final PImage img = Main.getInstance().loadImage("./res/images/sprites/enemies/test.bmp");
-	
 	public StandardEnemy(double health, PVector loc, int radius, double speed, double cd) {
 		super(health, loc, radius, speed, cd);
 	}
@@ -34,6 +32,7 @@ public class StandardEnemy extends Enemy {
 		//p.ellipse(0, 0, diameter(), diameter());
 		renderHealthBar(p, 50);
 		p.rotate((float) getAngle() + PApplet.radians(90));
+		PImage img = Sprites.STD_ENEMY;
 		p.image(img, -img.width/2, -img.height/2);
 		p.popMatrix();
 	}

@@ -3,6 +3,7 @@ package entities.creatures.enemies;
 import entities.bullets.ExplosionAnimation;
 import entities.creatures.players.Player;
 import general.Game;
+import general.GameConstants;
 import general.GameSP;
 import general.Level;
 import guns.EnemyAutomatic;
@@ -26,11 +27,11 @@ public class Boss1 extends Enemy {
 	public Boss1(double health, PVector loc, int radius, double speed, double cd) {
 		super(health, loc, radius, speed, cd);
 		
-		guns[0] = new EnemyAutomatic(10, 0.05, 0.5);
-		guns[1] = new EnemyRocketLauncher(40, 0.1);
-		guns[2] = new EnemyFlamethrower(0.001, 0.1, 6, 4);
-		guns[3] = new EnemyShockwaver(0.2, 30);
-		guns[4] = new EnemyLaser(0.05);
+		guns[0] = new EnemyAutomatic(10, GameConstants.BOSS_AUTOMATIC_DAMAGE, 0.5);
+		guns[1] = new EnemyRocketLauncher(40, GameConstants.BOSS_ROCKET_DAMAGE);
+		guns[2] = new EnemyFlamethrower(GameConstants.BOSS_FLAMETHROWER_DAMAGE, 0.1, 6, 4);
+		guns[3] = new EnemyShockwaver(GameConstants.BOSS_SHOCKWAVER_DAMAGE, 30);
+		guns[4] = new EnemyLaser(GameConstants.BOSS_LASER_DAMAGE);
 		
 		setPushable(false);
 	}
@@ -89,7 +90,7 @@ public class Boss1 extends Enemy {
 		g.setFlashTimeout(10);
 		Level level = g.getLevel();
 		for (int i = 0; i < 20; i++)
-			level.addEnemy(new Crawler(0.1, locCopy(), 10, 2 + Math.random() * 2, -0.05));
+			level.addEnemy(new Crawler(0.1, locCopy(), 10, 2 + Math.random() * 2, GameConstants.CRAWLER_COLLISION_DAMAMGE));
 		super.onRemove(game);
 	}
 

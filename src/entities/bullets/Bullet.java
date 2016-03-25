@@ -2,6 +2,7 @@ package entities.bullets;
 
 import entities.MobileEntity;
 import general.Game;
+import general.Main;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -16,7 +17,15 @@ public class Bullet extends MobileEntity {
 
 	public void update(Game game) {
 		// Move the bullet in the direction of its angle.
-		followAngle();
+        double s = getSpeed();
+		
+		double f = Main.frameRate;
+		
+		if(f < Main.MIN_FPS)
+			f = Main.MIN_FPS;
+		
+		s *= 60.0/f;
+		followAngle(s);
 	}
 
 	public void render(PGraphics p) {

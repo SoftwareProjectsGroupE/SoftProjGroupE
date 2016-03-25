@@ -3,6 +3,7 @@ package entities.creatures.enemies;
 import entities.creatures.players.Player;
 import general.Game;
 import general.GameSP;
+import general.Main;
 import general.Sprites;
 import guns.EnemyAutomatic;
 import guns.EnemyFlamethrower;
@@ -43,7 +44,12 @@ public class RandomStateEnemy extends Enemy {
 		} 
 		else if (state == -1) 
 		{ 
-			followAngle();
+			double s = getSpeed();		
+			double f = Main.frameRate;		
+			if(f < Main.MIN_FPS)
+				f = Main.MIN_FPS;			
+			s *= 60.0/f;
+			followAngle(s);
 		} 
 		else if (state == 1) 
 		{

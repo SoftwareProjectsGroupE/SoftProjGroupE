@@ -31,7 +31,13 @@ public abstract class Enemy extends Creature {
 	public void seek(Creature target) {
 		PVector dir = PVector.sub(target.loc(), loc());
 		setAngle(dir.heading());
-		dir.setMag((float) getSpeed());
+		double ds = getSpeed();
+		double f = Main.frameRate;	
+		if(f < Main.MIN_FPS)
+			f = Main.MIN_FPS;	
+		ds *= 60.0/f;	
+		int s = (int) ds;
+		dir.setMag(s);
 		loc().add(dir);
 	}
 
@@ -57,7 +63,13 @@ public abstract class Enemy extends Creature {
 			PVector target = new PVector(temp.x * bs + bs / 2, temp.y * bs + bs / 2);
 			PVector dir = PVector.sub(target, loc());
 			setAngle(dir.heading());
-			loc().add(dir.setMag((float) getSpeed()));
+			double ds = getSpeed();
+			double f = Main.frameRate;		
+			if(f < Main.MIN_FPS)
+				f = Main.MIN_FPS;		
+			ds *= 60.0/f;			
+			int s = (int) ds;
+			loc().add(dir.setMag(s));
 		}
 
 		// older logic without "next-point-reached" checking

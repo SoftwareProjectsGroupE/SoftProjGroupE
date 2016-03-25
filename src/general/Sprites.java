@@ -7,6 +7,9 @@ import processing.core.PConstants;
 import processing.core.PImage;
 
 public class Sprites {
+	
+	
+	public static final PImage STD_ENEMY = Main.getInstance().loadImage("./res/images/sprites/enemies/test.bmp");
 
 	static PImage[][] up = new PImage[8][9];
 	static PImage[][] down = new PImage[8][9];
@@ -49,13 +52,17 @@ public class Sprites {
 	static int last_dir = 0;
 
 	public static PImage get(int dir) {
-		if (dir == -1) {
+		if (dir == -1)
 			dir = last_dir;
-		}
 		
 		last_dir = dir;
 		
-		int indx = (Main.frameCount/2) % 18;
+        double f = Main.frameRate;
+		
+		if(f < Main.MIN_FPS)
+			f = Main.MIN_FPS;
+		
+		int indx = ((int)Main.spriteFrameCounter/2) % 18;
 
 		return indx < 9 ? up[dir][indx] : down[dir][indx - 9];
 

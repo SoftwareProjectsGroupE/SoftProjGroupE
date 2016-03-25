@@ -19,24 +19,19 @@ public class Main extends PApplet {
 	public static boolean mousePressed;
 	public static int frameCount;
 	public static double frameRate;
+	public static double spriteFrameCounter = 0;
 	public static final double MIN_FPS = 20.0;
 
 	private static Main main;
 
 	private PGraphics buffer;
-	// private static PGraphics staticLayer;
 
 	public static Main getInstance() {
 		return main;
 	}
-	
-	// public static PGraphics getStaticLayer() {
-	// return staticLayer;
-	// }
 
 	public void setup() {
 		buffer = createGraphics(WIDTH, HEIGHT, P3D);
-		// staticLayer = createGraphics(WIDTH, HEIGHT, P3D);
 		main = this;
 		MapFactory.loadMaps(this);
 		TileFactory.loadTiles();
@@ -56,16 +51,18 @@ public class Main extends PApplet {
 		mousePressed = super.mousePressed;
 		frameCount = super.frameCount;
 		frameRate = super.frameRate;
+		
+        double f = frameRate;	
+		if(f < MIN_FPS)
+			f = MIN_FPS;
+		spriteFrameCounter += 60.0/f;
 
 		buffer.beginDraw();
-		// staticLayer.beginDraw();
 		StateStack.head().update(this);
 		StateStack.head().render(buffer);
 		buffer.fill(255, 0, 0);
 		buffer.endDraw();
-		// staticLayer.endDraw();
 		image(buffer, 0, 0);
-		// image(staticLayer, 0 ,0);
 	}
 
 	public void mousePressed() {
