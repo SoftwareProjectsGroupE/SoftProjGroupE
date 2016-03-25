@@ -100,10 +100,10 @@ public class Map //implements Iterator<int[]>
 		for (Cell c : cells()) {
 			
 			if (isSpawn(c.x, c.y)) 
-				playerSpawn = new PVector(c.x * bs + bs, c.y * bs + bs);
+				playerSpawn = new PVector(c.x * bs + bs/2, c.y * bs + bs/2);
 			
 			if (isFinish(c.x, c.y)) 
-				bossSpawn = new PVector(c.x * bs + bs, c.y * bs + bs);
+				bossSpawn = new PVector(c.x * bs + bs/2, c.y * bs + bs/2);
 			
 			if (walkable(c.x, c.y)) {
 				float ux = (float) (c.x * bs + Math.random() * bs);

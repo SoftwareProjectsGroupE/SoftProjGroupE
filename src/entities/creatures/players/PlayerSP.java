@@ -4,6 +4,7 @@ import general.Camera;
 import general.Game;
 import general.Main;
 import general.Sprites;
+import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -30,15 +31,13 @@ public class PlayerSP extends Player {
 	}
 
 	private void updateLoc() {
-		double ds = getSpeed();
+		double s = getSpeed();
 		double f = Main.frameRate;
 		
-		if(f < Main.MIN_FPS)
+		if (f < Main.MIN_FPS)
 			f = Main.MIN_FPS;
 		
-		ds *= 60.0/f;
-		
-		int s = (int) ds;
+		s *= 60.0/f;
 	
 		if (controller.up)
 			updateLocY(-s);

@@ -12,6 +12,8 @@ import gui.Utils;
 import map.Map;
 import processing.core.PGraphics;
 import processing.core.PVector;
+import states.GameOverScreen;
+import states.StateStack;
 import tiles.CompositeTile;
 
 public class Level {
@@ -26,7 +28,7 @@ public class Level {
 		this.map = map;
 		if (isBossLevel()) {
 			PVector bs = map.getBossSpawn().copy();
-			Enemy boss = game.getEnemyFactory().nextBoss(bs);
+			Enemy boss = game.getEnemyFactory().nextBoss(bs, game.levelCount);
 			enemies.add(boss);
 		} else
 			spawnEnemies();
@@ -45,21 +47,19 @@ public class Level {
 		PVector ps = map.getPlayerSpawn();
 		PVector unit_player_spawn = new PVector(ps.x/Map.BLOCK_SIZE, ps.y/Map.BLOCK_SIZE);
 
-		// change loop increment or 0.1 to gauge enemy density
-		for (int i = 0; i < spawnPoints.size(); i += 2) {
-			if (Math.random() < 0.05) {
-				PVector p = spawnPoints.get(i).copy();
-				PVector unit_spawn_point = new PVector(p.x/Map.BLOCK_SIZE, p.y/Map.BLOCK_SIZE);
-				
-				// makes sure enemies don't spawn trapped in closed rooms
-				if (path_finder.a_star_search(map, unit_spawn_point, unit_player_spawn) == null)
-					continue;
+		// change loop increment to gauge enemy density
+		for (int i = 0; i < spawnPoints.size(); i += 100) {
+			PVector p = spawnPoints.get(i).copy();
+			PVector unit_spawn_point = new PVector(p.x/Map.BLOCK_SIZE, p.y/Map.BLOCK_SIZE);
+			
+			// makes sure enemies don't spawn trapped in closed rooms
+			if (path_finder.a_star_search(map, unit_spawn_point, unit_player_spawn) == null)
+				continue;
 
-				Enemy e = enemyFactory.randomEnemy(p);
-				
-				if (e.offScreen(ps.x - Main.WIDTH/2, ps.y - Main.HEIGHT/2))
-					enemies.add(e);
-			}
+			Enemy e = enemyFactory.randomEnemy(p, game.levelCount);
+			
+			if (e.offScreen(ps.x - Main.WIDTH/2, ps.y - Main.HEIGHT/2))
+				enemies.add(e);
 		}
 	}
 
@@ -73,8 +73,8 @@ public class Level {
 			e.update();
 
 		if (map.isFinish(game.getPlayer().loc()))
-			// if(enemies_cleared()) 
-			finished = true;
+		    //if(enemies_cleared()) 
+			    finished = true;
 
 		List<Bullet> playerBullets = game.getPlayer().getBullets();
 		collect_garbage(playerBullets);
@@ -116,7 +116,7 @@ public class Level {
 		}
 
 		if (player.dead()) {
-			// StateStack.setCurrentState(new GameOverScreen());
+			//StateStack.setCurrentState(new GameOverScreen());
 		}
 	}
 
@@ -223,8 +223,8 @@ public class Level {
 		
 		if (enemies.size() < 5) {
 			for (Enemy e : enemies) {
-				if (e.offScreen(scrn_loc)) {
-					p.stroke(255, 0, 0);
+				if (e.offScreen(scrn_loc)) {					
+					p.stroke(255, 0, 0, Utils.pulse(2.0));
 					p.line(e.locX(), e.locY(), player.locX(), player.locY());
 				}
 			}
@@ -241,6 +241,13 @@ public class Level {
 
 		player.render(p);
 		p.popMatrix();
+		
+		if (enemies.size() < 5 && !enemies.isEmpty()) {
+			p.fill(255, 0, 0, Utils.pulse(2.0));
+			p.textSize(15);
+			p.text("Finish off the enemies!", Main.WIDTH/2, Main.HEIGHT/2 - 60);
+			p.textSize(12);
+		}
 
 		player.getGun().render(p);
 

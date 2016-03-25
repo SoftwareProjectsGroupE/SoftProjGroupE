@@ -10,18 +10,21 @@ import general.Main;
 import general.Node;
 import general.PathFinder;
 import map.Map;
-import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public abstract class Enemy extends Creature {
 
 	public final double COLLISION_DAMAGE;
-
+	
+	public final PImage img;
+	
 	private PathFinder pathFinder = new PathFinder(true);
 
-	public Enemy(double health, PVector loc, int radius, double speed, double collision_damage) {
+	public Enemy(PImage img, double health, PVector loc, int radius, double speed, double collision_damage) {
 		super(health, loc, radius, speed);
 		COLLISION_DAMAGE = collision_damage;
+		this.img = img;
 	}
 
 	public abstract void onPlayerCollision(GameSP game, Player player);

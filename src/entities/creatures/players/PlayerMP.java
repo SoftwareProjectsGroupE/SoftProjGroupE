@@ -21,6 +21,7 @@ public class PlayerMP extends Player {
 	}
 	
 	public void reset() {
+		controller.reset();
 		speedBoostTimeout = -1;
 		setSpeed(ORIGINAL_SPEED);
 		guns = new ArrayList<PlayerGun>();

@@ -3,6 +3,7 @@ package entities.bullets;
 import entities.MobileEntity;
 import general.Game;
 import general.Main;
+import gui.Utils;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
@@ -29,9 +30,10 @@ public class Bullet extends MobileEntity {
 	}
 
 	public void render(PGraphics p) {
+		p.noStroke();
+		p.fill(Utils.pulse(15.0), 0, Utils.pulse(30.0));
+		p.ellipse(locX(), locY(), diameter(), diameter());
 		p.stroke(0);
 		p.strokeWeight(1);
-		p.fill(255, 0, 255);
-		p.ellipse(locX(), locY(), diameter(), diameter());
 	}
 }

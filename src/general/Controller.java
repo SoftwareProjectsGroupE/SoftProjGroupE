@@ -37,4 +37,8 @@ public class Controller {
 			return 7;
 		return -1;
 	}
+
+	public void reset() {
+		up = down = left = right = false;
+	}
 }

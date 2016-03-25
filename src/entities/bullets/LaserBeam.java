@@ -9,8 +9,8 @@ public class LaserBeam extends Bullet {
 	
 	private final PVector start;
 
-	public LaserBeam(PVector start, PVector end) {
-		super(end, 4, 0, 0, 0.03);
+	public LaserBeam(PVector start, PVector end, double damage) {
+		super(end, 4, 0, 0, damage);
 		this.start = start;
 	}
 	
@@ -31,9 +31,10 @@ public class LaserBeam extends Bullet {
 		p.stroke(0, 255, 0);
 		p.strokeWeight(diameter());
 		p.line(locX(), locY(), start.x, start.y);
-		p.strokeWeight(1);
+		p.strokeWeight(0);
 		p.fill(0, 255, 0);
 		p.ellipse(locX(), locY(), diameter(), diameter());
+		p.strokeWeight(1);
 		p.stroke(0);
 	}
 }

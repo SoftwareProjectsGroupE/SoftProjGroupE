@@ -53,7 +53,7 @@ public class PlayerLaser extends PlayerGun {
 			dummy.loc().add(dir);
 		}
 		
-		Bullet b = new LaserBeam(player.locCopy(), dummy.locCopy());
+		Bullet b = new LaserBeam(player.locCopy(), dummy.locCopy(), GameConstants.LASER_DAMAGE_SP);
 		player.addBullet(b);
 		return true;
 	}

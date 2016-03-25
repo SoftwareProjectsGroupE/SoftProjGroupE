@@ -17,16 +17,18 @@ import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
 
-public class Boss1 extends Enemy {
+public class Boss extends Enemy {
+	
+	PImage img_crwl;
 
 	private EnemyGun[] guns = new EnemyGun[5];
 	private int current_gun = 0;
 
 	private int state = 0;
 
-	public Boss1(double health, PVector loc, int radius, double speed, double cd) {
-		super(health, loc, radius, speed, cd);
-		
+	public Boss(PImage img, PImage img_crwl, double health, PVector loc, int radius, double speed, double cd) {
+		super(img, health, loc, radius, speed, cd);
+		this.img_crwl = img_crwl;
 		guns[0] = new EnemyAutomatic(10, GameConstants.BOSS_AUTOMATIC_DAMAGE, 0.5);
 		guns[1] = new EnemyRocketLauncher(40, GameConstants.BOSS_ROCKET_DAMAGE);
 		guns[2] = new EnemyFlamethrower(GameConstants.BOSS_FLAMETHROWER_DAMAGE, 0.1, 6, 4);
@@ -75,9 +77,10 @@ public class Boss1 extends Enemy {
 		p.fill(255);
 		p.pushMatrix();
 		p.translate(locX(), locY());
-		p.ellipse(0, 0, diameter(), diameter());
+		//p.ellipse(0, 0, diameter(), diameter());
 		renderHealthBar(p, 300);
-		p.rotate((float) getAngle());
+		p.rotate((float) getAngle() + PApplet.radians(90));
+		p.image(img, -img.width/2, -img.height/2);
 		p.popMatrix();
 	}
 
@@ -90,7 +93,7 @@ public class Boss1 extends Enemy {
 		g.setFlashTimeout(10);
 		Level level = g.getLevel();
 		for (int i = 0; i < 20; i++)
-			level.addEnemy(new Crawler(0.1, locCopy(), 10, 2 + Math.random() * 2, GameConstants.CRAWLER_COLLISION_DAMAMGE));
+			level.addEnemy(new Crawler(img_crwl, 0.1, locCopy(), 10, 2 + Math.random() * 2, GameConstants.CRAWLER_COLLISION_DAMAMGE));
 		super.onRemove(game);
 	}
 

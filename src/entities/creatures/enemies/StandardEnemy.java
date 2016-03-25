@@ -13,13 +13,13 @@ import processing.core.PVector;
 
 public class StandardEnemy extends Enemy {
 	
-	public StandardEnemy(double health, PVector loc, int radius, double speed, double cd) {
-		super(health, loc, radius, speed, cd);
+	public StandardEnemy(PImage img, double health, PVector loc, int radius, double speed, double cd) {
+		super(img, health, loc, radius, speed, cd);
 	}
 	
 	@Override 
 	public void update(Game game) {
-		if(Math.random() < 0.02)
+		if(Math.random() < 0.01)
 			shoot((GameSP) game);
 		move(game.get_map(), game.getPlayer().locCopy());
 	}
@@ -32,7 +32,6 @@ public class StandardEnemy extends Enemy {
 		//p.ellipse(0, 0, diameter(), diameter());
 		renderHealthBar(p, 50);
 		p.rotate((float) getAngle() + PApplet.radians(90));
-		PImage img = Sprites.STD_ENEMY;
 		p.image(img, -img.width/2, -img.height/2);
 		p.popMatrix();
 	}
@@ -41,7 +40,7 @@ public class StandardEnemy extends Enemy {
 		Player player = game.getPlayer();
 		double a = angleTo(player);
 		double spread = Math.random() * 0.3 - 0.15;
-		Bullet b = new Bullet(locCopy(), 4, 4, a + spread, 0.05);
+		Bullet b = new Bullet(locCopy(), 4, 3, a + spread, 0.05);
 		getBullets().add(b);
 	}
 

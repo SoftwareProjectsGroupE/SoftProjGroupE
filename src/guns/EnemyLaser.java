@@ -44,7 +44,7 @@ public class EnemyLaser extends EnemyGun {
 			dummy.loc().add(dir);
 		}
 		
-		Bullet b = new LaserBeam(enemy.locCopy(), dummy.locCopy());
+		Bullet b = new LaserBeam(enemy.locCopy(), dummy.locCopy(), damage);
 		enemy.addBullet(b);
 	}
 }

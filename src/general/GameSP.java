@@ -83,7 +83,9 @@ public class GameSP extends Game {
 		
 		if (level.enemies_cleared()) {
 			p.fill(0, 255, 0, Utils.pulse(2.0));
-			p.text("Get to the finish!", Main.WIDTH/2, Main.HEIGHT/2);
+			p.textSize(15);
+			p.text("Get to the finish!", Main.WIDTH/2, Main.HEIGHT/2 - 60);
+			p.textSize(12);
 		}
 	}
 	

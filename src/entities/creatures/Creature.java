@@ -95,12 +95,15 @@ public abstract class Creature extends MobileEntity {
 	}
 	
 	public void renderHealthBar(PGraphics p, int width) {
+		p.pushMatrix();
+		p.translate(0, 0, 1);
 		p.fill(255, 0, 0);
 		p.rect(-width/2, -getRadius() - 10, width, 5);
 		p.fill(0, 255, 0);
 		float w = PApplet.map((float) health, 0, (float) start_health, 0, width);
 		if(w < 0) w = 0;
 		p.rect(-width/2, -getRadius() - 10, w, 5);
+		p.popMatrix();
 	}
 	
 	public void setPushable(boolean b) {

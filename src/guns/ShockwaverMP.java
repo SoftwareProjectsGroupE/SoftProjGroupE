@@ -7,7 +7,7 @@ import processing.core.PApplet;
 
 public class ShockwaverMP extends PlayerGun {
 	public ShockwaverMP() {
-		super(5, 50);
+		super(5, 500);
 	}
 
 	@Override
