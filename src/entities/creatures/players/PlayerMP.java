@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 import general.Game;
 import general.Main;
+import general.Sprites;
 import guns.PistolMP;
 import guns.PlayerGun;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import processing.core.PImage;
 
 public class PlayerMP extends Player {
 	
@@ -80,8 +82,14 @@ public class PlayerMP extends Player {
 			p.fill(51, 205, 255);
 			p.rect(Main.WIDTH/2 - 25, Main.HEIGHT/2 -getRadius() - 15, speedBoostTimeout/5, 5);
 		}
-		p.fill(255);
-		p.ellipse(Main.WIDTH/2, Main.HEIGHT/2, 30, 30);
+		//p.fill(255);
+		//p.ellipse(Main.WIDTH/2, Main.HEIGHT/2, 30, 30);
+		
+		
+		
+
+		PImage img = Sprites.get(controller.direction());
+		p.image(img, Main.WIDTH/2 - img.width/2, Main.HEIGHT/2 - img.height/2);
 	}
 
 	private boolean respawned = false;

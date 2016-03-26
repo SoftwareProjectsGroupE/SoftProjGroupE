@@ -217,7 +217,7 @@ public class Level {
 			for (Bullet b : e.getBullets())
 				if (b.onScreen(scrn_loc))
 					b.render(p);
-			if (e.onScreen(scrn_loc))
+			if (e.onScreen(scrn_loc, 50))
 				e.render(p);
 		}
 		

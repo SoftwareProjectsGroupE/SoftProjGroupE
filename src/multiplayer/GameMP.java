@@ -21,12 +21,14 @@ import entities.creatures.players.PlayerMP;
 import general.Game;
 import general.GameConstants;
 import general.Main;
+import general.Sprites;
 import gui.Button;
 import gui.Function;
 import map.Map;
 import map.MapFactory;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import processing.core.PImage;
 import processing.core.PVector;
 import states.MainMenu;
 import states.MessageScreen;
@@ -101,7 +103,7 @@ public class GameMP extends Game {
 			return;
 
 		chat = new ChatBox(this);
-		chat.append_feed("Successfully connected to host: " + hostIP);
+		chat.append_feed("Successfully connected to host: " + hostIP.substring(0, 5) + "...");
 		chat.enable();
 
 		InputHandler ih = new InputHandler(in);
@@ -436,9 +438,10 @@ public class GameMP extends Game {
 		player.render(p);
 		render_health_bar(p, id, Main.WIDTH / 2, Main.HEIGHT / 2);
 
-		p.fill(0);
-		p.text(id, Main.WIDTH / 2, Main.HEIGHT / 2);
 		p.fill(255, 0, 0);
+		p.textSize(15);
+		p.text(id, Main.WIDTH / 2, Main.HEIGHT / 2);
+		p.textSize(12);	
 		p.text("fps: " + Main.frameRate, 100, 30);
 		p.text("Map: " + get_map().name, 100, 55);
 		
@@ -476,10 +479,18 @@ public class GameMP extends Game {
 			render_health_bar(p, i, x, y);
 
 			// player
-			p.fill(255);
-			p.ellipse(x, y, 30, 30);
-			p.fill(0);
+			p.pushMatrix();
+			p.translate(x, y);
+			double a = PApplet.atan2(player.locY() - y, player.locX() - x);
+			p.rotate((float)a + PApplet.radians(90));
+			PImage img = Sprites.MP_ENEMY;
+			p.image(img, -img.width/2, -img.height/2);
+			p.popMatrix();
+			p.fill(0, 255, 0);
+			p.textSize(15);
 			p.text(i, x, y);
+			p.textSize(12);
+			p.fill(0);
 		}
 	}
 	
@@ -496,8 +507,14 @@ public class GameMP extends Game {
 			Object[] pair = sorted_scoreboard.get(i);
 			scoreboard += (String) pair[0] + pair[1] + "\n";
 		}
-		
+		p.fill(0, 150);
+		p.rectMode(PApplet.CENTER);
+		p.rect(Main.WIDTH/2, Main.HEIGHT/2, 200, sorted_scoreboard.size() * 30);
+		p.rectMode(PApplet.CORNER);
+		p.fill(255);
+		p.textSize(15);
 		p.text(scoreboard, Main.WIDTH/2, Main.HEIGHT/2);
+		p.textSize(12);
 	}
 	
 	
@@ -530,10 +547,11 @@ public class GameMP extends Game {
 	
 
 	public static boolean on_screen(PVector screen, int x, int y) {
-		return x > screen.x && 
-			   x < screen.x + Main.WIDTH &&
-			   y > screen.y && 
-			   y < screen.y + Main.HEIGHT;
+		int offset = 50;
+		return x + offset > screen.x && 
+			   x - offset < screen.x + Main.WIDTH &&
+			   y + offset > screen.y && 
+			   y - offset < screen.y + Main.HEIGHT;
 	}
 	
 	

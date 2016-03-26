@@ -163,8 +163,9 @@ public class Server {
 			return false;
 		
 		for (String ip : ips) {
-			try {
-				append_feed("Checking if " + ip + " is a potential host...");
+			String hiddenIP = ip.substring(0, 5) + "...";
+			try {		
+				append_feed("Checking if " + hiddenIP + " is a potential host...");
 				Socket s = new Socket();
 				s.connect(new InetSocketAddress(ip, Protocol.PORT), 2000);
 				s.close();
@@ -172,11 +173,11 @@ public class Server {
 					append_feed("You can't start the server more than once!");
 					return true;
 				}
-				append_feed("Unable to start " + type + " server.\n" + type + " server is already running at:\n    " + ip);
+				append_feed("Unable to start " + type + " server.\n" + type + " server is already running at:\n    " + hiddenIP);
 				return true;
 			} catch (IOException e) {
 				e.printStackTrace();
-				append_feed(ip + " is inactive.");
+				append_feed(hiddenIP + " is inactive.");
 			}
 		}
 		return false;
