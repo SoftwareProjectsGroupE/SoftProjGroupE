@@ -54,6 +54,6 @@ public class EnemyFactory {
 		double cd = GameConstants.BOSS_COLLISION_DAMAGE;
 		int h = GameConstants.BOSS_HEALTH;
 		int s = GameConstants.BOSS_SPEED;
-		return new Boss(boss, crwl, h, loc, 50, s, cd);
+		return new Boss(boss, crwl, h, loc, 16, s, cd);
 	}
 }

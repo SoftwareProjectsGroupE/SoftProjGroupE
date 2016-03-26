@@ -33,7 +33,7 @@ public class MapEditor implements State {
 	private Button inc_size_btn = new Button("+size", 50, 50, 50, 25);
 	private Button dec_size_btn = new Button("-size", 0, 50, 50, 25);
 	
-	private Tile editor_tile = TileFactory.getTile("1");
+	private Tile editor_tile = TileFactory.getTile("0");
 
 	private final Main m;
 	private final Map map;
@@ -357,6 +357,7 @@ public class MapEditor implements State {
 					
 					if(get_spawn_and_finish() == null) {
 						StateStack.push(new MessageScreen("Please add Spawn Area and Finish Area Tiles!", back));
+						editor_tile = TileFactory.getTile("0");
 						return;
 					}
 					

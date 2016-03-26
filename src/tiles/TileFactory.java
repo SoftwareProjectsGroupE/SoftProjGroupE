@@ -1,8 +1,12 @@
 package tiles;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import processing.core.PApplet;
+import processing.core.PImage;
 import tiles.items.FlamethrowerPickup;
 import tiles.items.HealthPack;
 import tiles.items.ItemTile;
@@ -17,15 +21,13 @@ public class TileFactory {
 	
 	private static final List<Tile> tiles = new ArrayList<Tile>();
 	
-	public static void loadTiles() {
-		tiles.add(new Tile("Grass", "grass.jpg", false, true));
+	public static void loadTiles() {	
 		tiles.add(new Tile("Spawn-Area", "spawn.png", false, true));
 		tiles.add(new Tile("Finish-Area", "finish.jpg", false, true));
+		tiles.add(new Tile("Grass", "grass.jpg", false, true));
 		tiles.add(new Tile("Ground 1", "ground.jpg", false, true));
 		tiles.add(new Tile("Ground 2", "ground2.jpg", false, true));
 		tiles.add(new Tile("Ground 3", "ground3.jpg", false, true));
-		// grass is in here twice
-		tiles.add(new Tile("Grass", "grass.jpg", false, true));
 		tiles.add(new Tile("Wall", "wall.jpg", true, false));		
 		tiles.add(new Tile("Wood 1", "wood.jpg", false, true));		
 		tiles.add(new Tile("Wood 2", "wood2.jpg", false, true));
@@ -41,6 +43,24 @@ public class TileFactory {
 		tiles.add(new LaserPickup("Laser", "laser.png"));
 		tiles.add(new HealthPack("Health pack", "health.png"));
 		tiles.add(new SpeedBoost("Speed boost", "speed.png"));
+		
+		load_bulk();
+	}
+	
+	private static void load_bulk() {
+		File walkable = new File("./res/images/tileset/walkable/");
+		File[] files = walkable.listFiles();
+		Arrays.sort(files);
+		for (File file : files) {
+			tiles.add(new Tile("", "walkable/" + file.getName(), false, true));
+		}
+		File solid = new File("./res/images/tileset/solid/");
+		File[] files2 = solid.listFiles();
+		Arrays.sort(files2);
+		for (File file : files2) {
+			tiles.add(new Tile("", "solid/" + file.getName(), true, false));
+		}
+
 	}
 	
 	public static int tileCount() {
@@ -62,9 +82,9 @@ public class TileFactory {
 		if(type.equals("null")) 
 			return null;
 		
-		if(type.length() == 4) {
-			String id1 = type.substring(0, 2);
-			String id2 = type.substring(2, 4);
+		if(type.length() == 6) {
+			String id1 = type.substring(0, 3);
+			String id2 = type.substring(3, 6);
 			Tile base = tiles.get(Integer.parseInt(id1));
 			ItemTile itemTile = (ItemTile) tiles.get(Integer.parseInt(id2));
 			return new CompositeTile(base, itemTile);

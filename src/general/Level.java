@@ -242,11 +242,13 @@ public class Level {
 		player.render(p);
 		p.popMatrix();
 		
-		if (enemies.size() < 5 && !enemies.isEmpty()) {
-			p.fill(255, 0, 0, Utils.pulse(2.0));
-			p.textSize(15);
-			p.text("Finish off the enemies!", Main.WIDTH/2, Main.HEIGHT/2 - 60);
-			p.textSize(12);
+		if (!(game.levelCount % 3 == 0 || game.levelCount == 10)) {
+			if (enemies.size() < 5 && !enemies.isEmpty()) {
+				p.fill(255, 0, 0, Utils.pulse(2.0));
+				p.textSize(15);
+				p.text("Finish off the enemies!", Main.WIDTH/2, Main.HEIGHT/2 - 60);
+				p.textSize(12);
+			}
 		}
 
 		player.getGun().render(p);

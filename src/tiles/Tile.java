@@ -29,7 +29,8 @@ public class Tile {
 		this.solid = solid;
 		this.walkable = walkable;
 		int temp = TileFactory.tileCount();
-		id = temp < 10 ? "0" + temp : String.valueOf(temp);
+		id = String.valueOf(temp);
+		id = "000".substring(id.length()) + id;
 	}
 	
 	public Tile(String name, boolean solid, boolean walkable) {
