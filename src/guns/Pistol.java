@@ -3,6 +3,7 @@ package guns;
 import entities.bullets.Bullet;
 import entities.creatures.players.Player;
 import general.Game;
+import general.Sprites;
 
 public class Pistol extends PlayerGun {
 
@@ -19,7 +20,7 @@ public class Pistol extends PlayerGun {
 	public boolean shoot(Game game) {
 		Player player = game.getPlayer();
 		if (player.mouseClicked()) {
-			Bullet b = new Bullet(player.locCopy(), 5, 10, player.getAngle(), 0.4);
+			Bullet b = new Bullet(Sprites.ARROW, player.locCopy(), 5, 10, player.getAngle(), 0.4);
 			player.addBullet(b);
 			return true;
 		}

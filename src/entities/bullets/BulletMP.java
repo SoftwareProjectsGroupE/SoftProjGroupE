@@ -2,14 +2,15 @@ package entities.bullets;
 
 import general.Game;
 import general.Main;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class BulletMP extends Bullet {
 	
 	public final int SHOOTER_ID;
 
-	public BulletMP(int shooterID, PVector loc, int radius, double speed, double angle, double damage) {
-		super(loc, radius, speed, angle, damage);
+	public BulletMP(PImage img, int shooterID, PVector loc, int radius, double speed, double angle, double damage) {
+		super(img, loc, radius, speed, angle, damage);
 		SHOOTER_ID = shooterID;
 	}
 	

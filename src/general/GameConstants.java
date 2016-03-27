@@ -9,7 +9,7 @@ public class GameConstants {
 	public static final int A_STAR_INTERVAL = 15;
 	
 	public static final int LASER_AMMO_DCRMNT_SP = 1;
-	public static final double LASER_DAMAGE_SP = 0.03;
+	public static final double LASER_DAMAGE_SP = 0.06;
 	public static final int DEFAULT_AMMO = 1000;
 	public static final int FLAMETHROWER_AMMO_DCRMNT_MP = 1;
 	public static final float CAMERA_EASING = 10;

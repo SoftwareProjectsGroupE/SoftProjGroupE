@@ -52,15 +52,18 @@ public class TileFactory {
 		File[] files = walkable.listFiles();
 		Arrays.sort(files);
 		for (File file : files) {
-			tiles.add(new Tile("", "walkable/" + file.getName(), false, true));
+			// i put this file in the wrong folder. too late to change now as maps use it 
+			if (file.getName().equals("000135.jpg")) {
+				tiles.add(new Tile("", "walkable/" + file.getName(), true, false));
+			} else {
+				tiles.add(new Tile("", "walkable/" + file.getName(), false, true));
+			}
 		}
 		File solid = new File("./res/images/tileset/solid/");
 		File[] files2 = solid.listFiles();
 		Arrays.sort(files2);
-		for (File file : files2) {
+		for (File file : files2)
 			tiles.add(new Tile("", "solid/" + file.getName(), true, false));
-		}
-
 	}
 	
 	public static int tileCount() {

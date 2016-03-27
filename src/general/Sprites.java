@@ -33,6 +33,8 @@ public class Sprites {
 	public static PImage FINL_CRWL;
 	
 	public static PImage MP_ENEMY;
+	
+	public static PImage ARROW;
 
 	static PImage[][] up = new PImage[8][9];
 	static PImage[][] down = new PImage[8][9];
@@ -65,6 +67,9 @@ public class Sprites {
 		FINL_CRWL = p.loadImage("./res/images/sprites/enemies/finalboss/crawl.bmp");
 		
 		MP_ENEMY = p.loadImage("./res/images/sprites/enemies/multiplayer/enemy.bmp");
+		
+		ARROW = p.loadImage("./res/images/sprites/arrow.bmp");
+		ARROW.resize(40, 40);
 		//load_enemies(p);
 	}
 	

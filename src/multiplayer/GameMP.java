@@ -795,7 +795,7 @@ public class GameMP extends Game {
 			double speed = in.readDouble();
 			double angle = in.readDouble();
 			PVector p = new PVector((float) x, (float) y);
-			Bullet b = new BulletMP(id, p, radius, speed, angle, GameConstants.MP_BULLET_DAMAGE);
+			Bullet b = new BulletMP(Sprites.ARROW, id, p, radius, speed, angle, GameConstants.MP_BULLET_DAMAGE);
 			synchronized (BULLETS_LOCK) {
 				bullets.add(b);
 			}

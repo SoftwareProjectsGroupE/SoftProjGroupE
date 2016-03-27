@@ -263,7 +263,7 @@ public class MapEditor implements State {
 			dir = "custommaps";
 		}
 		
-		final String new_file_name = "/res/maps/" + dir + "/" + name + ".txt";
+		final String new_file_name = "/res/maps/" + dir + "/" + name.toLowerCase() + ".txt";
 		
 		m.saveStrings(new_file_name, data);
 		
