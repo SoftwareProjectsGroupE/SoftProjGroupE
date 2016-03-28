@@ -109,6 +109,10 @@ public class GameMP extends Game {
 
 		InputHandler ih = new InputHandler(in);
 		new Thread(ih, "Client input handler thread").start();
+		
+		// stop menu theme
+		Sound.playTheme(-1);
+		Sound.playThemeMP(current_map_id);
 	}
 	
 	
@@ -155,8 +159,6 @@ public class GameMP extends Game {
 		int length = in.readInt();
 		for (int i = 0; i < length; i++)
 			removed_items.add(new int[] { in.readInt(), in.readInt() });
-		
-		Main.getInstance().getSurface().setTitle(id + "");
 	}
 	
 	
@@ -164,9 +166,10 @@ public class GameMP extends Game {
 
 	private boolean connect_to_host(ArrayList<String> potentialHosts) {
 		for (String ip : potentialHosts) {
+			String hiddenIP = ip.substring(0, 5);
 			socket = new Socket();
 			try {
-				System.out.println("Checking if " + ip + " is an active host...");
+				System.out.println("Checking if " + hiddenIP + "... is an active host...");
 				
 				// connect to the ServerSocket that is listening on specified
 				// port. timeout after 2 seconds to prevent long freeze
@@ -174,7 +177,7 @@ public class GameMP extends Game {
 				// s = new Socket(hostIP, PORT);
 				
 				hostIP = ip;
-				System.out.println(ip + " is an active host.");
+				System.out.println(hiddenIP + "... is an active host.");
 				return true;
 				
 			} catch (IOException e) {
@@ -184,7 +187,7 @@ public class GameMP extends Game {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				System.out.println(ip + " is inactive.");
+				System.out.println(hiddenIP + "... is inactive.");
 			}
 		}
 		appendError("Failed to find and connect to a host.\n");
@@ -898,5 +901,11 @@ public class GameMP extends Game {
 	@Override
 	public Map get_map() {
 		return map;
+	}
+	
+	
+	
+	public int getCurMapID() {
+		return current_map_id;
 	}
 }

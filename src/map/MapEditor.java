@@ -5,6 +5,7 @@ import java.util.List;
 import general.Controller;
 import general.Main;
 import general.PathFinder;
+import general.Sound;
 import gui.Button;
 import gui.Function;
 import map.Map.Cell;
@@ -56,6 +57,7 @@ public class MapEditor implements State {
 				itemLayer.setTile(cell.x, cell.y, t.item);
 			}
 		}
+		Sound.playTheme(-1);
 	}
 	
 	public MapEditor(Main m) {

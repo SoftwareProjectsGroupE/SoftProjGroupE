@@ -31,6 +31,7 @@ public class Main extends PApplet {
 	}
 
 	public void setup() {
+		surface.setTitle("World Warriors");
 		buffer = createGraphics(WIDTH, HEIGHT, P3D);
 		main = this;
 		MapFactory.loadMaps(this);

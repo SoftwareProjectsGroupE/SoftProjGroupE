@@ -33,6 +33,7 @@ public class Level {
 			Sound.playBossLaugh();
 		} else
 			spawnEnemies();
+		Sound.playTheme(game.levelCount);
 	}
 
 	private boolean isBossLevel() {
@@ -119,7 +120,7 @@ public class Level {
 
 		if (player.dead()) {
 			Sound.playPlayerDeath();
-			//StateStack.setCurrentState(new GameOverScreen());
+			StateStack.setCurrentState(new GameOverScreen());
 		}
 	}
 

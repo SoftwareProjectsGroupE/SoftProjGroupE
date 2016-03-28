@@ -2,6 +2,7 @@ package states;
 
 import general.GameSP;
 import general.Main;
+import general.Sound;
 import gui.Button;
 import gui.Function;
 import map.CustomMapChooser;
@@ -20,7 +21,9 @@ public class MainMenu implements State {
 
 	public MainMenu(Main m) {
 		this.m = m;
-
+		Sound.playTheme(0);
+		// stop any looping multiplayer music
+		Sound.playThemeMP(-1);
 	}
 
 	public void onStart() {

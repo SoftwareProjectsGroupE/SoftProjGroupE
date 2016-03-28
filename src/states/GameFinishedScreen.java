@@ -1,6 +1,7 @@
 package states;
 
 import general.Main;
+import general.Sound;
 import gui.Button;
 import gui.Function;
 import processing.core.PGraphics;
@@ -11,7 +12,7 @@ public class GameFinishedScreen implements State {
 
 	@Override
 	public void onStart() {
-		// TODO Auto-generated method stub
+		Sound.playTheme(0);
 
 	}
 

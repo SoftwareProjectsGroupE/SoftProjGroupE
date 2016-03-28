@@ -3,6 +3,7 @@ package multiplayer;
 import java.util.List;
 
 import general.Main;
+import general.Sound;
 import gui.Button;
 import processing.core.PGraphics;
 import states.State;
@@ -26,16 +27,14 @@ public class IntermissionScreen implements State {
 	}
 
 	@Override
-	public void onStart() {
-		// TODO Auto-generated method stub
-
-	}
+	public void onStart() {}
 
 	@Override
 	public void update(Main m) {
-		if (System.currentTimeMillis() > timeout)
+		if (System.currentTimeMillis() > timeout) {
 			StateStack.pop();
-
+			Sound.playThemeMP(game_client.getCurMapID());
+		}
 	}
 
 	@Override
