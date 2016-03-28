@@ -4,6 +4,7 @@ import entities.bullets.Bullet;
 import entities.creatures.enemies.Enemy;
 import general.GameSP;
 import general.Main;
+import general.Sound;
 import processing.core.PApplet;
 
 public class EnemyShockwaver extends EnemyGun {
@@ -23,6 +24,7 @@ public class EnemyShockwaver extends EnemyGun {
 				enemy.addBullet(b);
 			}
 			game.setFlashTimeout(30);
+			Sound.playShockwave();
 		}
 	}
 }

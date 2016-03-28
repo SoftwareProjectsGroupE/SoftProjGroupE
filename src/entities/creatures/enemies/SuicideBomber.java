@@ -4,6 +4,7 @@ import entities.bullets.ExplosionAnimation;
 import entities.creatures.players.Player;
 import general.Game;
 import general.GameSP;
+import general.Sound;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
@@ -24,6 +25,7 @@ public class SuicideBomber extends Enemy {
 	public void onPlayerCollision(GameSP game, Player p) {
 		ExplosionAnimation e = new ExplosionAnimation(loc(), 50, 20);
 		game.add_explosion(e);
+		Sound.playSmallExplosion();
 		this.onRemove(game);
 	}
 

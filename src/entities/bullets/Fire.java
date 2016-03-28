@@ -1,6 +1,7 @@
 package entities.bullets;
 
 import general.Game;
+import general.Sound;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -16,6 +17,7 @@ public class Fire extends Bullet {
 		super(loc, radius, speed, a, damage);
 		MAX_RADIUS = radius;
 		setRadius(0);
+		Sound.playFlamethrower();
 	}
 
 	@Override

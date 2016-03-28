@@ -5,6 +5,7 @@ import entities.creatures.players.Player;
 import general.Game;
 import general.GameSP;
 import general.Main;
+import general.Sound;
 import general.Sprites;
 import processing.core.PApplet;
 import processing.core.PGraphics;
@@ -42,6 +43,8 @@ public class StandardEnemy extends Enemy {
 		double spread = Math.random() * 0.3 - 0.15;
 		Bullet b = new Bullet(locCopy(), 4, 3, a + spread, 0.05);
 		getBullets().add(b);
+		if (onScreen(game.screen_loc())) 
+			Sound.playEnemyBullet();
 	}
 
 	@Override

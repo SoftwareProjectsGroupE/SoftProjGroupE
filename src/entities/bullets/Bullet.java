@@ -48,10 +48,10 @@ public class Bullet extends MobileEntity {
 			p.popMatrix();
 			return;
 		}
-		p.noStroke();
-		p.fill(Utils.pulse(15.0), 0, Utils.pulse(30.0));
-		p.ellipse(locX(), locY(), diameter(), diameter());
 		p.stroke(0);
 		p.strokeWeight(1);
+		p.fill(Utils.pulse(15.0), 0, Utils.pulse(30.0));
+		p.ellipse(locX(), locY(), diameter(), diameter());
+
 	}
 }

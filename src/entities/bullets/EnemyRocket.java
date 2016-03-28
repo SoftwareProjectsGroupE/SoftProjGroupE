@@ -1,6 +1,7 @@
 package entities.bullets;
 
 import general.Game;
+import general.Sound;
 import processing.core.PVector;
 
 public class EnemyRocket extends Rocket {
@@ -10,6 +11,7 @@ public class EnemyRocket extends Rocket {
 	public EnemyRocket(PVector target, PVector loc, double speed, double damge) {
 		super(loc, speed, damge);
 		this.target = target;
+		Sound.playRocketFired();
 	}
 
 	@Override

@@ -37,6 +37,7 @@ public class Main extends PApplet {
 		TileFactory.loadTiles();
 		Inventory.load_images();
 		Sprites.load_sprites(this);
+		Sound.loadSounds(this);
 		buffer.beginDraw();
 		buffer.textAlign(CENTER, CENTER);
 		buffer.smooth();
@@ -79,6 +80,11 @@ public class Main extends PApplet {
 
 	public void keyReleased() {
 		StateStack.head().keyReleased(key);
+	}
+	
+	public void stop() { // when the program is closed, the following code is run
+	    Sound.stop();
+		super.stop();// runs the superclass' stop method
 	}
 
 	public static void main(String args[]) {

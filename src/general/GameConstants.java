@@ -1,6 +1,8 @@
 package general;
 
 public class GameConstants {
+	
+	public static final int PLAYER_SPEED_SP = 20; // 3;
 
 	public static final double MP_BULLET_DAMAGE = 0.1;
 	public static final double MP_FIRE_DAMAGE = 0.01;

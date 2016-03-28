@@ -1,6 +1,7 @@
 package entities.bullets;
 
 import general.Game;
+import general.Sound;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
@@ -24,6 +25,7 @@ public abstract class Rocket extends Bullet {
 	public void onRemove(Game game) {
 		ExplosionAnimation e = new ExplosionAnimation(loc(), 50, 20);
 		game.add_explosion(e);
+		Sound.playSmallExplosion();
 		super.onRemove(game);
 	}
 

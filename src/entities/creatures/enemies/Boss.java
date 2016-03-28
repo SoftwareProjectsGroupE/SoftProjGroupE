@@ -6,6 +6,7 @@ import general.Game;
 import general.GameConstants;
 import general.GameSP;
 import general.Level;
+import general.Sound;
 import guns.EnemyAutomatic;
 import guns.EnemyFlamethrower;
 import guns.EnemyGun;
@@ -94,6 +95,8 @@ public class Boss extends Enemy {
 		Level level = g.getLevel();
 		for (int i = 0; i < 20; i++)
 			level.addEnemy(new Crawler(img_crwl, 0.1, locCopy(), 10, 2 + Math.random() * 2, GameConstants.CRAWLER_COLLISION_DAMAMGE));
+		Sound.playBigExplosion();
+		Sound.playEnemyDeath();
 		super.onRemove(game);
 	}
 

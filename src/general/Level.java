@@ -30,6 +30,7 @@ public class Level {
 			PVector bs = map.getBossSpawn().copy();
 			Enemy boss = game.getEnemyFactory().nextBoss(bs, game.levelCount);
 			enemies.add(boss);
+			Sound.playBossLaugh();
 		} else
 			spawnEnemies();
 	}
@@ -113,9 +114,11 @@ public class Level {
 		if (tile != null) {
 			tile.onPickup(player);
 			map.setTile(player.loc(), tile.base);
+			Sound.playPickupSound();
 		}
 
 		if (player.dead()) {
+			Sound.playPlayerDeath();
 			//StateStack.setCurrentState(new GameOverScreen());
 		}
 	}
@@ -153,8 +156,10 @@ public class Level {
 				}
 			}
 
-			if (e.dead())
+			if (e.dead()) {
 				e.onRemove(game);
+				Sound.playEnemyDeath();
+			}
 		}
 	}
 

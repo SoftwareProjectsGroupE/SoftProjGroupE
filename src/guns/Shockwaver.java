@@ -3,6 +3,7 @@ package guns;
 import entities.bullets.Bullet;
 import entities.creatures.players.Player;
 import general.Game;
+import general.Sound;
 import processing.core.PApplet;
 
 public class Shockwaver extends PlayerGun {
@@ -18,6 +19,7 @@ public class Shockwaver extends PlayerGun {
 				Bullet b = new Bullet(player.locCopy(), 5, 20, PApplet.radians(i), 0.02);
 				player.addBullet(b);
 			}
+			Sound.playShockwave();
 			return true;
 		}
 		return false;

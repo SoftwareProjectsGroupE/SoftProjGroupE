@@ -2,6 +2,7 @@ package guns;
 
 import entities.creatures.players.Player;
 import general.Game;
+import general.Sound;
 import multiplayer.GameMP;
 
 public class ShotgunMP extends PlayerGun {
@@ -18,6 +19,7 @@ public class ShotgunMP extends PlayerGun {
 				double speed = 7 + Math.random() * 3;
 				((GameMP) game).send_bullet_fired(2, speed, spread);
 			}
+			Sound.playArrowFired();
 			return true;
 		}
 		return false;

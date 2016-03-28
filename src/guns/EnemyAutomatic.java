@@ -4,6 +4,7 @@ import entities.bullets.Bullet;
 import entities.creatures.enemies.Enemy;
 import general.GameSP;
 import general.Main;
+import general.Sound;
 
 public class EnemyAutomatic extends EnemyGun {
 
@@ -22,6 +23,8 @@ public class EnemyAutomatic extends EnemyGun {
 			double angle = enemy.getAngle() + Math.random() * spread - spread / 2;
 			Bullet b = new Bullet(enemy.locCopy(), 4, 4, angle, damage);
 			enemy.getBullets().add(b);
+			if (enemy.onScreen(game.screen_loc())) 
+				Sound.playEnemyBullet();
 		}
 	}
 }

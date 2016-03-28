@@ -21,6 +21,7 @@ import entities.creatures.players.PlayerMP;
 import general.Game;
 import general.GameConstants;
 import general.Main;
+import general.Sound;
 import general.Sprites;
 import gui.Button;
 import gui.Function;
@@ -326,6 +327,8 @@ public class GameMP extends Game {
 				send_health_updated(id, 0.3);
 			
 			send_item_picked_up(player.loc());
+			
+			Sound.playPickupSound();
 		}
 	}
 	
@@ -826,8 +829,12 @@ public class GameMP extends Game {
 			if (players_health[shootee_id] <= 0) {
 				players_health[shootee_id] = 1;
 				players_scores[shooter_id]++;
-				if (shootee_id == id)
+				if (shootee_id == id) {
 					spawn_player();
+					Sound.playPlayerDeath();
+				} else {
+					Sound.playEnemyDeath();
+				}
 			}
 		}
 	}

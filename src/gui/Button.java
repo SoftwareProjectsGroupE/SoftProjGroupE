@@ -1,6 +1,7 @@
 package gui;
 
 import general.Main;
+import general.Sound;
 import processing.core.PGraphics;
 
 public class Button {
@@ -24,11 +25,13 @@ public class Button {
 
 	public void press(Function function) {
 		function.invoke();
+		Sound.playClick();
 	}
 
 	public void press() {
 		if (function != null) {
 			function.invoke();
+			Sound.playClick();
 		}
 	}
 

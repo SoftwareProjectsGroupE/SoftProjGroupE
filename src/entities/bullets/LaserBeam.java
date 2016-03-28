@@ -1,6 +1,7 @@
 package entities.bullets;
 
 import general.Game;
+import gui.Utils;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -28,11 +29,11 @@ public class LaserBeam extends Bullet {
 	
 	@Override
 	public void render(PGraphics p) {
-		p.stroke(0, 255, 0);
+		p.stroke(Utils.pulse(15.0), 0, Utils.pulse(30.0));
 		p.strokeWeight(diameter());
 		p.line(locX(), locY(), start.x, start.y);
 		p.strokeWeight(0);
-		p.fill(0, 255, 0);
+		p.fill(Utils.pulse(15.0), 0, Utils.pulse(30.0));
 		p.ellipse(locX(), locY(), diameter(), diameter());
 		p.strokeWeight(1);
 		p.stroke(0);

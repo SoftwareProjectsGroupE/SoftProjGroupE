@@ -29,7 +29,7 @@ public class GameSP extends Game {
 	private Camera camera;
 
 	public GameSP(Map map) {
-		player = new PlayerSP(1, map.getPlayerSpawn(), 16, 3);
+		player = new PlayerSP(1, map.getPlayerSpawn(), 16, GameConstants.PLAYER_SPEED_SP);
 		camera = new Camera(player.loc());
 		level = new Level(this, map);
 	}
@@ -58,6 +58,8 @@ public class GameSP extends Game {
 		player.getBullets().clear();
 		player.setLoc(next.getPlayerSpawn());
 		camera.setAnchor(player.loc());
+		
+		Sound.playLevelFinished();
 	}
 
 	public void render(PGraphics p) {

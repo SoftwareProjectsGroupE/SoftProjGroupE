@@ -5,6 +5,7 @@ import entities.bullets.LaserBeam;
 import entities.creatures.enemies.Enemy;
 import entities.creatures.players.Player;
 import general.GameSP;
+import general.Sound;
 import guns.EnemyGun;
 import map.Map;
 import processing.core.PApplet;
@@ -46,5 +47,8 @@ public class EnemyLaser extends EnemyGun {
 		
 		Bullet b = new LaserBeam(enemy.locCopy(), dummy.locCopy(), damage);
 		enemy.addBullet(b);
+		
+		if (enemy.onScreen(game.screen_loc()))
+			Sound.playLaser();
 	}
 }

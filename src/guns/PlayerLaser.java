@@ -8,6 +8,7 @@ import general.Game;
 import general.GameConstants;
 import general.Level;
 import general.Main;
+import general.Sound;
 import general.GameSP;
 import guns.PlayerGun;
 import map.Map;
@@ -55,6 +56,9 @@ public class PlayerLaser extends PlayerGun {
 		
 		Bullet b = new LaserBeam(player.locCopy(), dummy.locCopy(), GameConstants.LASER_DAMAGE_SP);
 		player.addBullet(b);
+		
+		Sound.playLaser();
+		
 		return true;
 	}
 }
