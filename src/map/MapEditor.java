@@ -48,6 +48,14 @@ public class MapEditor implements State {
 		this.m = m;
 		this.map = map;
 		itemLayer = new Map();
+		
+		for (Cell cell : map.cells()) {
+			CompositeTile t = map.getItem(cell.x, cell.y);
+			if (t != null) {
+				this.map.setTile(cell.x, cell.y, t.base);
+				itemLayer.setTile(cell.x, cell.y, t.item);
+			}
+		}
 	}
 	
 	public MapEditor(Main m) {

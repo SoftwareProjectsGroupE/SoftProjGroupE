@@ -235,7 +235,7 @@ public class GameMP extends Game {
 	@Override
 	public void onStart() {
 		if (error.equals("")) {
-			map = MapFactory.getMap(current_map_id);
+			map = MapFactory.getMultMap(current_map_id);
 			bullets.clear();
 			in_intermission = false;
 			spawn_player();

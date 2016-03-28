@@ -2,6 +2,7 @@ package map;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import processing.core.PApplet;
@@ -12,6 +13,7 @@ public class MapFactory {
 
 	private static List<String> dev_map_files;
 	private static List<String> cust_map_files;
+	private static List<String> multiplayer_map_files;
 
 	public static void loadMaps(PApplet p) {
 
@@ -21,15 +23,17 @@ public class MapFactory {
 			throw new RuntimeException("/res/maps/devmaps/ is empty!");
 
 		cust_map_files = find_files("/res/maps/custommaps/");
-
-		if (cust_map_files.isEmpty())
-			throw new RuntimeException("/res/maps/custommaps/ is empty!");
+		
+		multiplayer_map_files = find_files("/res/maps/multmaps/");
+		
+		if (multiplayer_map_files.isEmpty())
+			throw new RuntimeException("/res/maps/multmaps/ is empty!");
 	}
 
 	private static List<String> find_files(String path) {
 		File folder = new File("." + path);
 		File[] files = folder.listFiles();
-
+		Arrays.sort(files);
 		List<String> list = new ArrayList<String>();
 		for (File f : files) {
 			if (f.isFile()) {
@@ -58,6 +62,12 @@ public class MapFactory {
 		if (i < 0 || i >= dev_map_files.size())
 			throw new IllegalArgumentException("This map doesn't exist: " + i);
 		return new Map(dev_map_files.get(i));
+	}
+	
+	public static Map getMultMap(int i) {
+		if (i < 0 || i >= multiplayer_map_files.size())
+			throw new IllegalArgumentException("This map doesn't exist: " + i);
+		return new Map(multiplayer_map_files.get(i));
 	}
 
 	public Map nextLevel(Map current) {

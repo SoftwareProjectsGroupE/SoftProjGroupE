@@ -17,7 +17,7 @@ public class Protocol {
 
 	public static final int MAX_PLAYERS = 10;
 	public static final int PORT = 6789;
-	public static final int MAP_COUNT = 5;
+	public static final int MAP_COUNT = 4;
 
 	public static final String SCRIPT_URL = "http://doc.gold.ac.uk/~ma301ab/PHPTest/game/index.php?";
 	public static final String IP_LOOKUP_URL = "http://checkip.amazonaws.com";

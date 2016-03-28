@@ -13,6 +13,7 @@ import states.StateStack;
 public class CustomMapChooser implements State {
 
 	private Button[] cstm_map_btns;
+	private Button back_btn = new Button("Back", Main.WIDTH - 100, 0, 100, 25);
 
 	public CustomMapChooser() {
 		List<String> cstm_map_files = MapFactory.getCustomMapFiles();
@@ -44,8 +45,12 @@ public class CustomMapChooser implements State {
 			b.render(p, p.color(255, 0, 0));
 
 		p.fill(255);
-		p.text("Choose a custom map to play.", Main.WIDTH / 2, 100);
+		if (cstm_map_btns.length == 0)
+			p.text("You haven't made any custom maps yet!", Main.WIDTH / 2, Main.HEIGHT/2);
+		else
+			p.text("Choose a custom map to play.", Main.WIDTH / 2, 100);
 
+		back_btn.render(p, p.color(255, 0, 0));
 	}
 
 	@Override
@@ -74,6 +79,9 @@ public class CustomMapChooser implements State {
 				});
 			}
 		}
+		
+		if (back_btn.mouseOver(mouseX, mouseY)) 
+			back_btn.press(new Function(){});
 	}
 
 	@Override
