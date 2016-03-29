@@ -26,7 +26,8 @@ public class HowToPlayScreen implements State {
 		p.background(0);
 		p.fill(255);
 		p.textSize(14);
-		p.text("Your objective is to make it through all of the ten levels without dying.\n"
+		p.text("Single player:\n"
+				+ "Your objective is to make it through all of the ten levels without dying.\n"
 				+ "You must kill every enemy to complete a level."
 				+ "\nCollect weapons and upgrades to assist you throughout your mission."
 				+ "\nGood luck!"
@@ -38,7 +39,11 @@ public class HowToPlayScreen implements State {
 				+ "\nd = right"
 				+ "\nmouse click/hold = shoot"
 				+ "\nmouse movement = aim"
-				+ "\nFor the best gaming experience it is reccomended that you use a usb mouse (not a track pad)", Main.WIDTH/2, Main.HEIGHT/2);
+				+ "\nFor the best gaming experience it is reccomended that you use a usb mouse (not a track pad)"
+				+ "\n\nMultiplayer:\n"
+				+ "Kill other players. First person to 20 kills wins."
+				+ "\nPlease read the 'READ ME.txt' file for instructions on connecting to multiplayer."
+				+ "", Main.WIDTH/2, Main.HEIGHT/2);
 		back_btn.render(p, p.color(255, 0, 0));
 
 	}

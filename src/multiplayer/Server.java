@@ -55,7 +55,7 @@ public class Server {
 	private long intermission_start = -1;
 	private long intermission_end;
 		
-	private final int MAX_KILLS = 10;
+	private final int MAX_KILLS = 20;
 
 	// connections must be synchronized or multiple outputstreams will be writing to the sockets outputstream at once
 	public Connection[] connections = new Connection[Protocol.MAX_PLAYERS];
@@ -340,7 +340,7 @@ public class Server {
 							continue;
 						}
 						add_connection(s);
-						append_feed("Player connected: " + s.getInetAddress());
+						append_feed("Player connected: " + s.getInetAddress().toString().substring(0, 9) + "...");
 					}
 				} catch (IOException e) {
 					e.printStackTrace();

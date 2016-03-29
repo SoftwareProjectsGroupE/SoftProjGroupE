@@ -75,7 +75,7 @@ public class Level {
 			e.update();
 
 		if (map.isFinish(game.getPlayer().loc()))
-		    if(enemies_cleared() || GameConstants.DEBUG_MODE) 
+		    if(enemies_cleared()/* || GameConstants.DEBUG_MODE*/) 
 			    finished = true;
 
 		List<Bullet> playerBullets = game.getPlayer().getBullets();
@@ -109,7 +109,7 @@ public class Level {
 		Player player = game.getPlayer();
 		player.update(game);
 		player.seperate(enemies);
-		if(!GameConstants.DEBUG_MODE)
+		//if(!GameConstants.DEBUG_MODE)
 			player.collidedWall(map);
 
 		CompositeTile tile = map.getItem(player.loc());

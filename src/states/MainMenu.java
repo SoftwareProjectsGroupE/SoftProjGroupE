@@ -22,7 +22,8 @@ public class MainMenu implements State {
 
 	public MainMenu(Main m) {
 		this.m = m;
-		Sound.playTheme(0);
+		if (!Sound.menuThemePlaying()) 
+			Sound.playTheme(0);
 		// stop any looping multiplayer music
 		Sound.playThemeMP(-1);
 	}
