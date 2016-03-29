@@ -54,6 +54,8 @@ public class EnemyFactory {
 		double cd = GameConstants.BOSS_COLLISION_DAMAGE;
 		int h = GameConstants.BOSS_HEALTH;
 		int s = GameConstants.BOSS_SPEED;
+		if (level == 10) 
+			return new Boss(boss, crwl, 200, loc, 16, 10, -0.06);
 		return new Boss(boss, crwl, h, loc, 16, s, cd);
 	}
 }

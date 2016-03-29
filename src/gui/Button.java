@@ -46,6 +46,7 @@ public class Button {
 		p.noLights();
 		p.rect(x, y, w, h);
 		p.fill(0);
+		p.textSize(12);
 		p.text(label, x + w / 2, y + h / 2);
 	}
 }

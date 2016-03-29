@@ -75,7 +75,7 @@ public class Level {
 			e.update();
 
 		if (map.isFinish(game.getPlayer().loc()))
-		    //if(enemies_cleared()) 
+		    if(enemies_cleared() || GameConstants.DEBUG_MODE) 
 			    finished = true;
 
 		List<Bullet> playerBullets = game.getPlayer().getBullets();
@@ -109,7 +109,8 @@ public class Level {
 		Player player = game.getPlayer();
 		player.update(game);
 		player.seperate(enemies);
-		player.collidedWall(map);
+		if(!GameConstants.DEBUG_MODE)
+			player.collidedWall(map);
 
 		CompositeTile tile = map.getItem(player.loc());
 		if (tile != null) {
@@ -118,7 +119,7 @@ public class Level {
 			Sound.playPickupSound();
 		}
 
-		if (player.dead()) {
+		if (player.dead() && !GameConstants.DEBUG_MODE) {
 			Sound.playPlayerDeath();
 			StateStack.setCurrentState(new GameOverScreen());
 		}
@@ -259,7 +260,8 @@ public class Level {
 
 		player.getGun().render(p);
 
-		p.text("enemies left: " + enemies.size(), 100, 40);
+		p.fill(0);
+		p.text("enemies left: " + enemies.size(), 600, 12);
 	}
 
 	public Map getMap() {

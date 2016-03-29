@@ -28,10 +28,13 @@ public abstract class PlayerGun {
 	}
 
 	public void render(PGraphics p) {
+		p.textSize(14);
+		p.fill(0);
+		p.text("Ammo", 100, 12);
 		p.fill(50);
-		p.rect(200, 5, 200, 5);
+		p.rect(130, 10, 200, 10);
 		p.fill(255);
-		p.rect(200, 5, (float) (ammo / 5), 5);
+		p.rect(130, 10, (float) (ammo / 5), 10);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import tiles.TileFactory;
 
 public class Main extends PApplet {
 
-	// size must be multiple of 32
+	// size must be multiple of 32 (just dont change this)
 	public static final int WIDTH = 32 * 25;
 	public static final int HEIGHT = 32 * 19;
 

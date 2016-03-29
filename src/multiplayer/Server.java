@@ -64,11 +64,6 @@ public class Server {
 	List<int[]> removed_items = new ArrayList<int[]>();
 	public final Object REMOVED_ITEMS_LOCK = new Object();
 	
-	/* these should be fields in connection class!? 
-	 * i.e:
-	 * double health;
-	 * int score;
-	 * */
 	double[] players_health = new double[Protocol.MAX_PLAYERS];
 	int[] players_scores = new int[Protocol.MAX_PLAYERS];
 	

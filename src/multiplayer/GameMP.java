@@ -448,8 +448,8 @@ public class GameMP extends Game {
 		p.textSize(15);
 		p.text(id, Main.WIDTH / 2, Main.HEIGHT / 2);
 		p.textSize(12);	
-		p.text("fps: " + Main.frameRate, 100, 30);
-		p.text("Map: " + get_map().name, 100, 55);
+		//p.text("fps: " + Main.frameRate, 100, 30);
+		//p.text("Map: " + get_map().name, 100, 55);
 		
 		if (showing_scoreboard) 
 			show_scoreboard(p);

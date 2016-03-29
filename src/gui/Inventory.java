@@ -57,6 +57,8 @@ public class Inventory {
 				p.image(get_img(gun.id), BTN_SIZE + i * BTN_SIZE, Main.HEIGHT - BTN_SIZE);
 			}
 		}
+		int id = player.getGun().id;
+		p.image(images[id], 10, Main.HEIGHT - 100, 70, 50);
 	}
 
 	private static void add_img(int id, String file) {

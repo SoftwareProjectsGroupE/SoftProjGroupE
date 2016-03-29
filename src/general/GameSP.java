@@ -72,10 +72,10 @@ public class GameSP extends Game {
 			flashTime--;
 		}
 
-		p.fill(255, 0, 0);
-		p.text("fps: " + (int) Main.frameRate, 100, 30);
-		p.text("Level " + levelCount, 100, 55);
-		p.text("Map: " + get_map().name, 100, 80);
+		p.fill(0);
+		//p.text("fps: " + (int) Main.frameRate, 100, 30);
+		p.text("Level " + levelCount, 400, 12);
+		//p.text("Map: " + get_map().name, 100, 80);
 
 		exitButton.render(p, p.color(255, 0, 0));
 		inventoryButton.render(p, p.color(255, 0, 0));

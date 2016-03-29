@@ -3,9 +3,9 @@ package general;
 
 import ddf.minim.AudioSnippet;
 import ddf.minim.Minim;
-import entities.creatures.players.Player;
 import processing.core.PApplet;
 
+@SuppressWarnings("deprecation")
 public class Sound {
 	private static Minim minim;
 	private static AudioSnippet 

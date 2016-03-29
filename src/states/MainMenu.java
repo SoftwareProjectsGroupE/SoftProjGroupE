@@ -15,8 +15,9 @@ public class MainMenu implements State {
 	private Main m;
 
 	private Button singlePlayerGameButton = new Button("Single Player", Main.WIDTH / 2 - 75, Main.HEIGHT - 400, 150, 50);
-	private Button multiplayerGameButton = new Button("Multiplayer (BETA)", Main.WIDTH / 2 - 75, Main.HEIGHT - 300, 150, 50);
-	private Button mapEditorButton = new Button("Map Editor", Main.WIDTH / 2 - 75, Main.HEIGHT - 200, 150, 50);
+	private Button howToPlayButton = new Button("How to play", Main.WIDTH / 2 - 75, Main.HEIGHT - 325, 150, 50);
+	private Button multiplayerGameButton = new Button("Multiplayer (BETA)", Main.WIDTH / 2 - 75, Main.HEIGHT - 250, 150, 50);
+	private Button mapEditorButton = new Button("Map Editor", Main.WIDTH / 2 - 75, Main.HEIGHT - 175, 150, 50);
 	private Button customMapGameButton = new Button("Custom Map Game", Main.WIDTH / 2 - 75, Main.HEIGHT - 100, 150, 50);
 
 	public MainMenu(Main m) {
@@ -47,6 +48,7 @@ public class MainMenu implements State {
 		p.fill(255, 0, 0);
 
 		singlePlayerGameButton.render(p, p.color(255, 0, 0));
+		howToPlayButton.render(p, p.color(255, 0, 0));
 		multiplayerGameButton.render(p, p.color(255, 0, 0));
 		mapEditorButton.render(p, p.color(255, 0, 0));
 		customMapGameButton.render(p, p.color(255, 0, 0));
@@ -82,6 +84,14 @@ public class MainMenu implements State {
 			singlePlayerGameButton.press(new Function() {
 				public void invoke() {
 					StateStack.setCurrentState(new GameSP());
+				}
+			});
+		}
+		
+		if (howToPlayButton.mouseOver(mouseX, mouseY)) {
+			howToPlayButton.press(new Function() {
+				public void invoke() {
+					StateStack.setCurrentState(new HowToPlayScreen());
 				}
 			});
 		}
