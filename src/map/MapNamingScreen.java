@@ -55,6 +55,7 @@ public class MapNamingScreen implements State {
 
 	@Override
 	public void keyPressed(int key) {
+		if (name.length() > 50) return;
 		if (key == 8) {
 			if (name.length() > 0)
 				name = name.substring(0, name.length() - 1);
