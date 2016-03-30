@@ -137,8 +137,7 @@ public class Sound {
 	}
 	
 	public static void playClick() {
-		if (!click.isPlaying())
-			click.play(0);
+		click.play(0);
 	}
 	
 	public static void playLaser() {
