@@ -40,14 +40,16 @@ public class IntermissionScreen implements State {
 	@Override
 	public void render(PGraphics buffer) {
 		buffer.background(0);
-		buffer.text(timeout - System.currentTimeMillis(), 100, 100);
-		
-		String scoreboard = "";
+		buffer.text("Next match in :" + ((timeout - System.currentTimeMillis())/1000 + " seconds"), 100, 100);
+		buffer.textSize(30);
+		buffer.text("Intermission", Main.WIDTH/2, 60);
+		buffer.textSize(15);
+		String scoreboard = "Kill Scoreboard\n\n";
 		for (int i = scores.size() - 1; i >= 0; i--)
 			scoreboard += scores.get(i) + "\n";
 			
 		buffer.text(scoreboard, Main.WIDTH / 2, Main.HEIGHT / 2);
-			
+		buffer.textSize(12);
 		exitLobbyButton.render(buffer, buffer.color(255, 0, 0));
 	}
 

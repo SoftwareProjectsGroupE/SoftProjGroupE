@@ -17,8 +17,10 @@ public class GameOverScreen implements State {
 		p.fill(0, 3);
 		p.rect(0, 0, Main.WIDTH, Main.HEIGHT);
 		mainMenuBtn.render(p, p.color(255, 0, 0));
-		p.fill(255);
-		p.text("GAME OVER", Main.WIDTH / 2, Main.HEIGHT / 2 - 200);
+		p.fill(255,0,0);
+		p.textSize(40);
+		p.text("YOU DIED\nGAME OVER", Main.WIDTH / 2, Main.HEIGHT / 2 - 200);
+		p.textSize(12);
 	}
 
 	public void onExit() {

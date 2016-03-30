@@ -5,6 +5,7 @@ import general.Main;
 import general.Sound;
 import gui.Button;
 import gui.Function;
+import gui.Utils;
 import map.CustomMapChooser;
 import map.PreMapEditor;
 import multiplayer.GameMP;
@@ -44,7 +45,12 @@ public class MainMenu implements State {
 			p.text("Connecting to server...", Main.WIDTH / 2, Main.HEIGHT / 2);
 			return;
 		}
-		p.background(0);
+		p.background(Utils.pulse(1));
+		
+		p.textSize(40);
+		p.fill(255, 0, 0);
+		p.text("World Warriors", Main.WIDTH/2, 100);
+		
 		p.textSize(12);
 		p.fill(255, 0, 0);
 

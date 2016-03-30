@@ -35,29 +35,29 @@ public class Sound {
 	
 	public static void loadSounds(PApplet p) {
 		minim = new Minim(p);
-		arrow = minim.loadSnippet("./res/sounds/arrowfired.mp3"); 
-		shockwave = minim.loadSnippet("./res/sounds/shockwave.mp3"); 
-		rocketFired = minim.loadSnippet("./res/sounds/rocketfired.mp3"); 
-		smallExplosion = minim.loadSnippet("./res/sounds/smallexplosion.mp3"); 
-		bigExplosion = minim.loadSnippet("./res/sounds/bigexplosion.mp3"); 
-		enemyDeath1 = minim.loadSnippet("./res/sounds/enemydeath1.mp3"); 
-		enemyDeath2 = minim.loadSnippet("./res/sounds/enemydeath2.mp3"); 
-		enemyDeath3 = minim.loadSnippet("./res/sounds/enemydeath3.mp3"); 
-		playerDeath = minim.loadSnippet("./res/sounds/playerdeath.mp3"); 
-		pickup = minim.loadSnippet("./res/sounds/pickup.mp3"); 
-		laser = minim.loadSnippet("./res/sounds/laser.mp3"); 
-		click = minim.loadSnippet("./res/sounds/buttonclick.mp3");
-		enemyBullet = minim.loadSnippet("./res/sounds/enemybullet.mp3");
-		flamethrower = minim.loadSnippet("./res/sounds/flamethrower.mp3");
-		levelFinished = minim.loadSnippet("./res/sounds/levelfinished.mp3");
-		bossLaugh = minim.loadSnippet("./res/sounds/bosslaugh.mp3");
-		dinoTheme = minim.loadSnippet("./res/sounds/dinotheme.mp3");
-		dinoThemeBoss = minim.loadSnippet("./res/sounds/dinothemeboss.mp3");
-		medTheme = minim.loadSnippet("./res/sounds/medtheme.mp3");
-		medThemeBoss = minim.loadSnippet("./res/sounds/medthemeboss.mp3");
-		underTheme = minim.loadSnippet("./res/sounds/undertheme.mp3");
-		underThemeBoss = minim.loadSnippet("./res/sounds/underthemeboss.mp3");
-		menuTheme = minim.loadSnippet("./res/sounds/menutheme.mp3");
+		arrow = minim.loadSnippet("./res/sounds/arrowfired.wav"); 
+		shockwave = minim.loadSnippet("./res/sounds/shockwave.wav"); 
+		rocketFired = minim.loadSnippet("./res/sounds/rocketfired.wav"); 
+		smallExplosion = minim.loadSnippet("./res/sounds/smallexplosion.wav"); 
+		bigExplosion = minim.loadSnippet("./res/sounds/bigexplosion.wav"); 
+		enemyDeath1 = minim.loadSnippet("./res/sounds/enemydeath1.wav"); 
+		enemyDeath2 = minim.loadSnippet("./res/sounds/enemydeath2.wav"); 
+		enemyDeath3 = minim.loadSnippet("./res/sounds/enemydeath3.wav"); 
+		playerDeath = minim.loadSnippet("./res/sounds/playerdeath.wav"); 
+		pickup = minim.loadSnippet("./res/sounds/pickup.wav"); 
+		laser = minim.loadSnippet("./res/sounds/laser.wav"); 
+		click = minim.loadSnippet("./res/sounds/buttonclick.wav");
+		enemyBullet = minim.loadSnippet("./res/sounds/enemybullet.wav");
+		flamethrower = minim.loadSnippet("./res/sounds/flamethrower.wav");
+		levelFinished = minim.loadSnippet("./res/sounds/levelfinished.wav");
+		bossLaugh = minim.loadSnippet("./res/sounds/bosslaugh.wav");
+		dinoTheme = minim.loadSnippet("./res/sounds/dinotheme.wav");
+		dinoThemeBoss = minim.loadSnippet("./res/sounds/dinothemeboss.wav");
+		medTheme = minim.loadSnippet("./res/sounds/medtheme.wav");
+		medThemeBoss = minim.loadSnippet("./res/sounds/medthemeboss.wav");
+		underTheme = minim.loadSnippet("./res/sounds/undertheme.wav");
+		underThemeBoss = minim.loadSnippet("./res/sounds/underthemeboss.wav");
+		menuTheme = minim.loadSnippet("./res/sounds/menutheme.wav");
 	}
 	
 	public static void playEnemyDeath() {
@@ -137,7 +137,8 @@ public class Sound {
 	}
 	
 	public static void playClick() {
-		click.play(0);
+		if (!click.isPlaying())
+			click.play(0);
 	}
 	
 	public static void playLaser() {

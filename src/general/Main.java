@@ -43,7 +43,7 @@ public class Main extends PApplet {
 		buffer.textAlign(CENTER, CENTER);
 		buffer.smooth();
 		buffer.endDraw();
-		// frameRate((float) MIN_FPS);
+		//frameRate((float) 30);
 		StateStack.push(new MainMenu(this));
 	}
 

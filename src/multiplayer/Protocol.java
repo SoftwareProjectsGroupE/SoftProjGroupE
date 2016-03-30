@@ -13,7 +13,7 @@ public class Protocol {
 	public static final byte HEALTH_UPDATED = 9;
 	public static final byte PLAYER_RESPAWNED = 10;
 
-	public static final long INTERMISSION_TIME = 5000;
+	public static final long INTERMISSION_TIME = 60000; // 1 minute
 
 	public static final int MAX_PLAYERS = 10;
 	public static final int PORT = 6789;

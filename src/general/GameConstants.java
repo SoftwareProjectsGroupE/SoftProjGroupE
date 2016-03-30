@@ -2,7 +2,7 @@ package general;
 
 public class GameConstants {
 
-	public static final boolean DEBUG_MODE = true;
+	public static final boolean DEBUG_MODE = false;
 	
 	public static final int PLAYER_SPEED_SP = 4;//3;
 

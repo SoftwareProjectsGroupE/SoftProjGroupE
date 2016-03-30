@@ -26,6 +26,7 @@ public class GameFinishedScreen implements State {
 	public void render(PGraphics p) {
 		p.background(0);
 		p.fill(255);
+		p.textSize(40);
 		p.text("YOU FINISHED THE GAME!!!", Main.WIDTH / 2, Main.HEIGHT / 2);
 		mainMenuButton.render(p, p.color(255, 0, 0));
 

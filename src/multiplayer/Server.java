@@ -55,7 +55,7 @@ public class Server {
 	private long intermission_start = -1;
 	private long intermission_end;
 		
-	private final int MAX_KILLS = 20;
+	private final int MAX_KILLS = 20;// match ends when a player gets 20 kills
 
 	// connections must be synchronized or multiple outputstreams will be writing to the sockets outputstream at once
 	public Connection[] connections = new Connection[Protocol.MAX_PLAYERS];
@@ -73,7 +73,7 @@ public class Server {
 	public Server() throws IOException {
 		setup_frame();
 		
-		set_current_map(); //this.randomMapID();
+		set_current_map();
 
 		LOCAL_IP  = try_get_localIP();
 		PUBLIC_IP = try_get_publicIP();
@@ -112,28 +112,6 @@ public class Server {
 		current_map_id = (int) (Math.random() * Protocol.MAP_COUNT); 
 		append_feed("Random map ID chosen: " + current_map_id);
 	}
-	
-	
-	
-	
-	/*
-	private int randomMapID() {
-		int count = 0;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("/res/maps/devmaps/maps.txt"));
-			String line = "";
-			while ((line = br.readLine()) != null) {
-				if(line.trim().length() > 0) {
-					count++;
-				}
-			}
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return (int) (Math.random() * count);
-	}
-	*/
 	
 
 	

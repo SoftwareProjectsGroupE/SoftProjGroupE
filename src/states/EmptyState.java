@@ -9,7 +9,7 @@ public class EmptyState implements State {
 	public void render(PGraphics p) {
 		p.background(0);
 		p.fill(255);
-		p.text("EMPTY STATE", Main.WIDTH/2, Main.HEIGHT/2);
+		p.text("......", Main.WIDTH/2, Main.HEIGHT/2);
 	}
 	public void onExit() {}
 	public void keyPressed(int key) {}
