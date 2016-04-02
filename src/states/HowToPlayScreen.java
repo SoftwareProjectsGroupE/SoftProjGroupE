@@ -41,7 +41,8 @@ public class HowToPlayScreen implements State {
 				+ "\nmouse movement = aim"
 				+ "\nFor the best gaming experience it is reccomended that you use a usb mouse (not a track pad)"
 				+ "\n\nMultiplayer:\n"
-				+ "Kill other players. First person to 20 kills wins."
+				+ "(Multiplayer is currently in development and is not yet fully featured. This is a beta version)\n"
+				+ "Kill other players. First person to 20 kills wins the match."
 				+ "\nPlease read the 'READ ME.txt' file for instructions on connecting to multiplayer."
 				+ "", Main.WIDTH/2, Main.HEIGHT/2);
 		back_btn.render(p, p.color(255, 0, 0));

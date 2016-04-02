@@ -9,7 +9,7 @@ import general.Sprites;
 
 public class Uzi extends PlayerGun {
 	public Uzi() {
-		super(2, 10);
+		super(2, 3);
 	}
 
 	@Override

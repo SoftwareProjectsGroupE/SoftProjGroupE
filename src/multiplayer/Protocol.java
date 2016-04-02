@@ -15,7 +15,7 @@ public class Protocol {
 
 	public static final long INTERMISSION_TIME = 60000; // 1 minute
 
-	public static final int MAX_PLAYERS = 10;
+	public static final int MAX_PLAYERS = 20;
 	public static final int PORT = 6789;
 	public static final int MAP_COUNT = 4;
 
